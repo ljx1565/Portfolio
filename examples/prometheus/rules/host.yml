@@ -1,0 +1,14 @@
+groups:
+  - name: host
+    rules:
+      - alert: HostDown
+        expr: up{job=~"node_exporter|windows"} == 0
+        for: 1m
+        labels: { severity: critical }
+        annotations: { summary: "{{ $labels.instance }} is not responding" }
+
+      - alert: MemoryLow
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.10
+        for: 5m
+        labels: { severity: warning }
+        annotations: { summary: "{{ $labels.instance }} available memory below 10%" }

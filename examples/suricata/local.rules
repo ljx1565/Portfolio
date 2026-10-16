@@ -1,0 +1,3 @@
+# SID ranges by category (2XXXXXX = web)
+# Same source, 5+ requests with an encoded single quote within 60 s -> drop (IPS mode)
+drop http $EXTERNAL_NET any -> $HOME_NET $HTTP_PORTS (msg:"SQL Injection - Repeated Single Quote Probe"; flow:established,to_server; http.uri; content:"%27"; nocase; detection_filter:track by_src, count 5, seconds 60; classtype:web-application-attack; sid:2001011; rev:1;)
