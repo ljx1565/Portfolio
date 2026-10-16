@@ -2,7 +2,7 @@
 
 서버 · 네트워크 구축, 로그 수집부터 관제 환경 구축 및 보안 점검 자동화까지의 경험
 
-**[웹 포트폴리오 보기 →](https://ljx1565.github.io/Portfolio/)** · [PDF 내려받기](portfolio.pdf) · [설정 예시](examples)
+**[웹 포트폴리오 보기 →](https://ljx1565.github.io/Portfolio/)** (← → 키 · 휠 · 스와이프로 넘기기) · [PDF 내려받기](portfolio.pdf) · [설정 예시](examples)
 
 ---
 
@@ -33,7 +33,7 @@
 ## 저장소 구성
 
 ```
-index.html        웹 포트폴리오 (가로 · 세로 화면 반응형, 스크롤 애니메이션)
+index.html        웹 포트폴리오 (한 장씩 넘기는 페이지 방식 · PC 가로 / 휴대폰 · 분할 화면 세로 최적화)
 assets/           스타일 · 스크립트 · 화면 캡처 · 로고
 portfolio.pdf     인쇄용 PDF (A4 · 25쪽)
 examples/         포트폴리오에 나온 설정의 발췌본 (주소 · 계정 · 키는 자리표시자)
