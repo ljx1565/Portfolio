@@ -13,12 +13,21 @@
   const links = [...document.querySelectorAll(".nav li a")];
   const parts = links.map((a) => document.querySelector(a.getAttribute("href")));
   const bar = document.querySelector(".progress");
+  const menu = document.querySelector(".nav ol");
+  let last = -2;
   const onScroll = () => {
     const y = window.scrollY + window.innerHeight * 0.35;
     let cur = -1;
     parts.forEach((p, i) => { if (p && p.offsetTop <= y) cur = i; });
-    links.forEach((a, i) => a.classList.toggle("on", i === cur));
-    if (cur >= 0) links[cur].scrollIntoView({ block: "nearest", inline: "nearest" });
+    if (cur !== last) {
+      last = cur;
+      links.forEach((a, i) => a.classList.toggle("on", i === cur));
+      // scroll only the menu strip sideways; scrollIntoView would also touch the page scroll and cancel wheel / touch momentum
+      if (cur >= 0 && menu.scrollWidth > menu.clientWidth) {
+        const r = links[cur].getBoundingClientRect(), m = menu.getBoundingClientRect();
+        menu.scrollLeft += (r.left + r.width / 2) - (m.left + m.width / 2);
+      }
+    }
     const h = document.documentElement.scrollHeight - window.innerHeight;
     bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
   };
